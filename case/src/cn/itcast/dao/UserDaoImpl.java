@@ -32,6 +32,10 @@ public class UserDaoImpl implements IUserDao{
     @Override
     public User findUserByUserNameAndPassWord(User user) {
         String sql="select * from user where username =? and password =?";
-        return jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(User.class), user.getUsername(), user.getPassword());
+        try{
+            return jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(User.class), user.getUsername(), user.getPassword());
+        }catch (Exception e){
+            return null;
+        }
     }
 }
