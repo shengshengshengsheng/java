@@ -42,9 +42,11 @@ public class LoginServlet extends HttpServlet {
                 resp.sendRedirect("index.jsp");
             }else {
                 req.setAttribute("login_msg","账号或密码有误,请重新输入");
+                req.getRequestDispatcher("/login.jsp").forward(req,resp);
             }
         }else {
             req.setAttribute("login_msg","验证码有误,请重新输入");
+            req.getRequestDispatcher("/login.jsp").forward(req,resp);
         }
     }
 }
